@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import actions from './store/action-creators';
 
 function App() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { depositMoney, withdrawMoney } = bindActionCreators(actions, dispatch);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{ display: 'flex', justifyContent: 'space-around', padding: 20 }}
+    >
+      <button aria-label="Increment value" onClick={() => depositMoney()}>
+        DEPOSIT
+      </button>
+
+      <span>{JSON.stringify(state)}</span>
+
+      <button aria-label="Decrement value" onClick={() => withdrawMoney()}>
+        WITHDRAW
+      </button>
     </div>
   );
 }
