@@ -1,3 +1,4 @@
+import { Button } from '@kunalphaltankar/my-first-react-library';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import actions from './store/action-creators';
@@ -9,8 +10,7 @@ function App() {
 
   return (
     <div
-      style={{ display: 'flex', justifyContent: 'space-around', padding: 20 }}
-    >
+      style={{ display: 'flex', justifyContent: 'space-around', padding: 20 }}>
       <button aria-label="Increment value" onClick={() => depositMoney()}>
         DEPOSIT
       </button>
@@ -20,6 +20,8 @@ function App() {
       <button aria-label="Decrement value" onClick={() => withdrawMoney()}>
         WITHDRAW
       </button>
+
+      <Button label="This button is from @kunalphaltankar/my-first-react-library" />
     </div>
   );
 }
